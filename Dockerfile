@@ -12,7 +12,7 @@ RUN (cd /tmp/build && \
 
 
 FROM nginx:stable-alpine
-LABEL Name=react-project-template
+LABEL Name=dataset-image-annotator-frontend
 LABEL Maintainer=kamikaze.is.waiting.you@gmail.com
 
 WORKDIR /usr/share/nginx/html/
