@@ -4,9 +4,10 @@ import config from "../config";
 import Icon, {
   BulbOutlined,
   LoginOutlined,
-  LogoutOutlined, OrderedListOutlined, PictureOutlined,
+  LogoutOutlined,
+  OrderedListOutlined,
+  PictureOutlined,
   SettingOutlined,
-  SolutionOutlined,
   TeamOutlined,
   UserOutlined
 } from "@ant-design/icons";
@@ -30,7 +31,7 @@ const MainMenu = () => {
 
   return (
         <Menu mode='horizontal' defaultSelectedKeys={['/']} selectedKeys={[location.pathname]}>
-          <Icon component={() => (<img src="/favicon-32x32.png" />)} />
+          <Icon component={() => (<img src="/favicon-32x32.png" alt={"Logo"} />)} />
           <Menu.Item key='/'>
             <NavLink to={config.PATH_ROOT + '/'}>
               <OrderedListOutlined />
