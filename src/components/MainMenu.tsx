@@ -2,7 +2,8 @@ import {Menu, Popover} from "antd";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import config from "../config";
 import Icon, {
-  BulbOutlined,
+  BellOutlined,
+  FileImageOutlined,
   LoginOutlined,
   LogoutOutlined,
   OrderedListOutlined,
@@ -47,6 +48,12 @@ const MainMenu = () => {
           <Menu.Item key="spacer" style={rightAlignedMenuItem}></Menu.Item>
           { user &&
           <Menu.SubMenu key="AdminSubMenu" title={t('Admin')} icon={<SettingOutlined />}>
+            <Menu.Item key='/admin/images'>
+              <NavLink to={config.PATH_ROOT + '/admin/images'}>
+                <FileImageOutlined />
+                <span>{t('Images')}</span>
+              </NavLink>
+            </Menu.Item>
             <Menu.Item key='/admin/teams'>
               <NavLink to={config.PATH_ROOT + '/admin/teams'}>
                 <TeamOutlined />
@@ -64,7 +71,7 @@ const MainMenu = () => {
           { user &&
           <Menu.Item key="notifications" >
             <Popover placement="bottom" title={t('Notifications')} content="" trigger="click">
-              <BulbOutlined />
+              <BellOutlined />
             </Popover>
           </Menu.Item>
           }

@@ -1,11 +1,11 @@
-import {PlusOutlined} from "@ant-design/icons";
+import {PlusOutlined, UploadOutlined} from "@ant-design/icons";
 import {Button, Space, Table} from "antd";
 import {useState} from "react";
 import {ColumnsType} from "antd/lib/table";
 import Title from "antd/lib/typography/Title";
 import {useTranslation} from "react-i18next";
 
-const UserListPage = () => {
+const ImageListPage = () => {
   const {t} = useTranslation();
   const [dataSource, setDataSource] = useState([]);
   const [rowCount, setRowCount] = useState<number>(100);
@@ -16,7 +16,6 @@ const UserListPage = () => {
   interface DataType {
     key: React.Key;
     name: string;
-    team: string;
   }
 
   const columns: ColumnsType<DataType> = [
@@ -28,17 +27,9 @@ const UserListPage = () => {
       // ...ColumnSearchProps('id', searchState, setSearchState)
     },
     {
-      title: t('Username'),
-      dataIndex: 'username',
-      key: 'username',
-      sorter: true,
-      defaultSortOrder: 'ascend' as const,
-      // ...ColumnSearchProps('name', searchState, setSearchState)
-    },
-    {
-      title: t('Team'),
-      dataIndex: 'team',
-      key: 'team',
+      title: t('Name'),
+      dataIndex: 'name',
+      key: 'name',
       sorter: true,
       defaultSortOrder: 'ascend' as const,
       // ...ColumnSearchProps('name', searchState, setSearchState)
@@ -51,10 +42,10 @@ const UserListPage = () => {
 
   return (
     <div>
-      <Title level={2}>{t('Users')}</Title>
+      <Title level={2}>{t('Images')}</Title>
       <Space size='middle' direction='vertical' style={{ width: '100%' }}>
         <Button>
-          <PlusOutlined/>{t('Create')}
+          <UploadOutlined />{t('Upload')}
         </Button>
         <Table dataSource={dataSource} columns={columns} loading={loading} onChange={onTableChange}
                showSorterTooltip={false}
@@ -66,4 +57,4 @@ const UserListPage = () => {
   )
 }
 
-export {UserListPage};
+export {ImageListPage};

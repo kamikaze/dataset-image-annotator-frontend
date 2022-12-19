@@ -1,11 +1,12 @@
-import {t} from "i18next";
 import {PlusOutlined} from "@ant-design/icons";
 import {Button, Space, Table} from "antd";
 import {useState} from "react";
 import {ColumnsType} from "antd/lib/table";
 import Title from "antd/lib/typography/Title";
+import {useTranslation} from "react-i18next";
 
 const TeamListPage = () => {
+  const {t} = useTranslation();
   const [dataSource, setDataSource] = useState([]);
   const [rowCount, setRowCount] = useState<number>(100);
   const [currentPage, setCurrentPage] = useState<number>(1);
