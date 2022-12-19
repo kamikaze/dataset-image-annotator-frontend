@@ -1,0 +1,71 @@
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    default_type application/octet-stream;
+
+    types {
+      text/html               html;
+      text/javascript         js;
+      text/css                css;
+      image/png               png;
+      image/jpg               jpg;
+      image/svg+xml           svg svgz;
+      application/octet-steam eot;
+      application/octet-steam ttf;
+      application/octet-steam woff;
+    }
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+    error_log /dev/stdout notice;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+
+    gzip                on;
+    gzip_http_version   1.1;
+    gzip_disable        "MSIE [1-6]\.";
+    gzip_min_length     1100;
+    gzip_vary           on;
+    gzip_proxied        expired no-cache no-store private auth;
+    gzip_types          text/plain text/css application/x-javascript application/json text/javascript;
+    gzip_comp_level     9;
+
+    server {
+        listen 8080 default_server;
+        charset utf-8;
+        root   /usr/share/nginx/html;
+        server_tokens off;
+        error_page   500 502 503 504  /50x.html;
+
+        location /locales/ {
+            alias /usr/share/nginx/html/locales/;
+        }
+
+        location /static/ {
+            alias /usr/share/nginx/html/static/;
+        }
+
+        location / {
+            index  index.html index.htm;
+            try_files $uri$args $uri$args/ /index.html;
+        }
+
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
+}
