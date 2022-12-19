@@ -1,16 +1,9 @@
 import React from 'react';
 import 'antd/dist/reset.css';
 import './App.css';
-import {
-  Navigate,
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements
-} from 'react-router-dom';
+import {createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider} from 'react-router-dom';
 
-import {HomePage} from './pages/HomePage';
-import {AdminPage} from './pages/AdminPage';
+import {ScoreboardPage} from './pages/ScoreboardPage';
 import {TeamListPage} from './pages/TeamListPage';
 import {TeamViewPage} from './pages/TeamViewPage';
 import {TeamEditPage} from './pages/TeamEditPage';
@@ -23,11 +16,14 @@ import {LoginPage} from './pages/LoginPage';
 import {PageLayout} from "./components/PageLayout";
 import {RequireAuth} from "./hoc/RequireAuth";
 import {AuthProvider} from "./hoc/AuthProvider";
+import {PlayPage} from "./pages/PlayPage";
+import {ConfigProvider} from "antd";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={'/'} element={<PageLayout />}>
-    <Route index element={<HomePage />} />
-    <Route path={'admin'} element={<RequireAuth><AdminPage /></RequireAuth>}>
+    <Route index element={<ScoreboardPage />} />
+    <Route path={'play'} element={<RequireAuth><PlayPage /></RequireAuth>} />
+    <Route path={'admin'}>
       <Route path={'teams'} element={<RequireAuth><TeamListPage /></RequireAuth>} />
       <Route path={'teams/:id'} element={<RequireAuth><TeamViewPage /></RequireAuth>} />
       <Route path={'teams/:id/edit'} element={<RequireAuth><TeamEditPage /></RequireAuth>} />
@@ -45,7 +41,17 @@ const router = createBrowserRouter(createRoutesFromElements(
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#80F',
+            colorPrimaryBg: '#80F',
+            colorFill: '#fff'
+          },
+        }}
+      >
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </AuthProvider>
   );
 }

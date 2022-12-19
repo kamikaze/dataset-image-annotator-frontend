@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ConfigProvider, Spin} from "antd";
-import lvLV from 'antd/lib/locale/lv_LV';
+import enUS from 'antd/lib/locale/en_US';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Suspense fallback={<Spin/>}>
-      <ConfigProvider locale={lvLV}>
+      <ConfigProvider locale={enUS}>
         <App/>
       </ConfigProvider>
     </Suspense>

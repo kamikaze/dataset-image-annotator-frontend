@@ -1,10 +1,10 @@
 import {Menu, Popover} from "antd";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import config from "../config";
-import {
+import Icon, {
   BulbOutlined,
   LoginOutlined,
-  LogoutOutlined,
+  LogoutOutlined, OrderedListOutlined, PictureOutlined,
   SettingOutlined,
   SolutionOutlined,
   TeamOutlined,
@@ -29,11 +29,18 @@ const MainMenu = () => {
   }
 
   return (
-        <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['/']} selectedKeys={[location.pathname]}>
+        <Menu mode='horizontal' defaultSelectedKeys={['/']} selectedKeys={[location.pathname]}>
+          <Icon component={() => (<img src="/favicon-32x32.png" />)} />
           <Menu.Item key='/'>
             <NavLink to={config.PATH_ROOT + '/'}>
-              <SolutionOutlined />
-              <span>{t('Portal')}</span>
+              <OrderedListOutlined />
+              <span>{t('Scoreboard')}</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key='/play'>
+            <NavLink to={config.PATH_ROOT + '/play'}>
+              <PictureOutlined />
+              <span>{t('Play')}!</span>
             </NavLink>
           </Menu.Item>
           <Menu.Item key="spacer" style={rightAlignedMenuItem}></Menu.Item>
