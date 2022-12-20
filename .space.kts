@@ -6,7 +6,7 @@ job("Build") {
       // leave only the branch name without the 'refs/heads/' path
       content = """
           export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)
-          export REVISION=${'$'}(echo {'$'}JB_SPACE_GIT_REVISION | cut -c0-8)
+          export REVISION=${'$'}(echo ${'$'}JB_SPACE_GIT_REVISION | cut -c0-8)
       """
     }
     build {
