@@ -6,6 +6,7 @@ job("Build") {
       // leave only the branch name without the 'refs/heads/' path
       content = """
           export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)
+          export REVISION=${${'$'}JB_SPACE_GIT_REVISION:0:8}
       """
     }
     build {
@@ -14,11 +15,9 @@ job("Build") {
       labels["vendor"] = "bixority"
     }
 
-    push("bixority.registry.jetbrains.space/p/rtu/containers/dataset-image-annotator-frotend") {
-      val spaceRepo = "mycompany.registry.jetbrains.space/p/prjkey/mydocker/myimage"
+    push("bixority.registry.jetbrains.space/p/rtu/containers/{"$"}JB_SPACE_GIT_REPOSITORY_NAME") {
       tags {
-        +"0.${"$"}JB_SPACE_EXECUTION_NUMBER"
-        +"${"$"}BRANCH-${"$"}JB_SPACE_GIT_REVISION"
+        +"${"$"}BRANCH-${"$"}REVISION"
       }
     }
   }
