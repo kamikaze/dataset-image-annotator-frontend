@@ -17,8 +17,8 @@ job("Build") {
     push("bixority.registry.jetbrains.space/p/rtu/containers/dataset-image-annotator-frotend") {
       val spaceRepo = "mycompany.registry.jetbrains.space/p/prjkey/mydocker/myimage"
       tags {
-        +"$spaceRepo:0.${"$"}JB_SPACE_EXECUTION_NUMBER"
-        +"$spaceRepo:${"$"}BRANCH-${"$"}JB_SPACE_GIT_REVISION"
+        +"0.${"$"}JB_SPACE_EXECUTION_NUMBER"
+        +"${"$"}BRANCH-${"$"}JB_SPACE_GIT_REVISION"
       }
     }
   }
