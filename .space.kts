@@ -5,8 +5,8 @@ job("Build") {
       // use env var to get full branch name,
       // leave only the branch name without the 'refs/heads/' path
       content = """
-          export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3);
-          export REVISION=${${'$'}JB_SPACE_GIT_REVISION:0:8}
+          export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)
+          export REVISION=${'$'}(echo {'$'}JB_SPACE_GIT_REVISION" | cut -c0-8)
       """
     }
     build {
