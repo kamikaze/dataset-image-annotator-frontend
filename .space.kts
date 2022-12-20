@@ -15,7 +15,7 @@ job("Build") {
       labels["vendor"] = "bixority"
     }
 
-    push("bixority.registry.jetbrains.space/p/rtu/containers/{"$"}JB_SPACE_GIT_REPOSITORY_NAME") {
+    push("bixority.registry.jetbrains.space/p/rtu/containers/${"$"}JB_SPACE_GIT_REPOSITORY_NAME") {
       tags {
         +"${"$"}BRANCH-${"$"}REVISION"
       }
