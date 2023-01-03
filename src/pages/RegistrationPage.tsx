@@ -15,7 +15,7 @@ const tailLayout = {
   wrapperCol: {offset: 8, span: 16}
 };
 
-const LoginPage = () => {
+const RegistrationPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const {signin} = useAuth();
@@ -67,7 +67,7 @@ const LoginPage = () => {
             minHeight: 280
           }}
         >
-          Login
+          Registration
           <Form
             {...layout}
             name='basic'
@@ -91,12 +91,17 @@ const LoginPage = () => {
               <Input.Password/>
             </Form.Item>
 
+            <Form.Item
+              label={t('Repeat password')}
+              name='repeat_password'
+              rules={[{required: true, message: t('Please repeat your password!')}]}
+            >
+              <Input.Password/>
+            </Form.Item>
+
             <Form.Item {...tailLayout}>
               <Button type='primary' htmlType='submit'>
                 <LoginOutlined/>
-                {t('Log in')}
-              </Button>
-              <Button type="link" href={'/register'}>
                 {t('Register')}
               </Button>
             </Form.Item>
@@ -107,4 +112,4 @@ const LoginPage = () => {
   )
 }
 
-export {LoginPage};
+export {RegistrationPage};

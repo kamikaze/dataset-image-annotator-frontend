@@ -20,6 +20,7 @@ import {PlayPage} from "./pages/PlayPage";
 import {ConfigProvider} from "antd";
 import {ImageListPage} from "./pages/ImageListPage";
 import {ImageViewPage} from "./pages/ImageViewPage";
+import {RegistrationPage} from "./pages/RegistrationPage";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={'/'} element={<PageLayout />}>
@@ -38,6 +39,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path={'users/new'} element={<RequireAuth><UserCreatePage /></RequireAuth>} />
     </Route>
     <Route path={'login'} element={<LoginPage />} />
+    <Route path={'register'} element={<RegistrationPage />} />
     <Route path={'*'} element={<Navigate to={'/'} replace />} />
   </Route>
 ))
