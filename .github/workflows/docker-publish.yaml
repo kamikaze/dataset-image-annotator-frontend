@@ -18,7 +18,6 @@ permissions:
 jobs:
   docker-build-and-push:
     name: Build and push Docker images
-    needs: pypi-build-and-push
     uses: ./.github/workflows/reusable-docker-build.yaml
 
     permissions:
