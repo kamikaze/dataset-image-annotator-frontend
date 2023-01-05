@@ -33,7 +33,7 @@ jobs:
       dockerhub-enable: true
       ghcr-enable: true
       platforms: linux/amd64,linux/arm64
-      file: Dockerfile.release
+      file: Dockerfile
 
       image-names: |
         kamikazer/${{ github.event.repository.name }}
