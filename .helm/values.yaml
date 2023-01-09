@@ -18,14 +18,14 @@ frontend:
     pathPrefix: "/"
 
 imageCredentials:
-  name: gitlabregistrycreds
+  name: dockerregistrycreds
   registry: docker-repo.localhost:5050
   username: docker-token
   password: token-secret
   email: admin@localhost
 
 imagePullSecrets:
-  - name: gitlabregistrycreds
+  - name: dockerregistrycreds
 
 nameOverride: ""
 fullnameOverride: ""
