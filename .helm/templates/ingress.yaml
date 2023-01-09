@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: frontend
+  name: annotator-frontend
 spec:
   entryPoints:
     - websecure
@@ -9,5 +9,5 @@ spec:
   - match: Host(`{{ .Values.frontend.ingress.host }}`) && PathPrefix(`{{ .Values.frontend.ingress.pathPrefix }}`)
     kind: Rule
     services:
-    - name: frontend
+    - name: annotator-frontend
       port: {{ .Values.frontend.service.port }}

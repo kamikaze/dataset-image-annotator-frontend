@@ -6,10 +6,10 @@ replicaCount: 1
 
 frontend:
   image:
-    repository: "docker-repo.localhost:5050/repo/frontend"
+    repository: "ghcr.io/kamikaze/dataset-image-annotator-frontend"
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "develop-f6e8f7ed"
+    tag: "gha-3849654233"
   service:
     type: ClusterIP
     port: 8080
