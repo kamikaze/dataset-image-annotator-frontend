@@ -8,6 +8,9 @@ spec:
   routes:
   - match: Host(`{{ .Values.frontend.ingress.host }}`) && PathPrefix(`{{ .Values.frontend.ingress.pathPrefix }}`)
     kind: Rule
+    middlewares:
+      - name: test-compress
+        namespace: {{.Release.Namespace}}
     services:
     - name: annotator-frontend
       port: {{ .Values.frontend.service.port }}
