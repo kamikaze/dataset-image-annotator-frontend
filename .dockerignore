@@ -1,3 +1,6 @@
-.vscode
-node_modules
-.git
+*
+!.docker/
+!src/
+!package.json
+!package-lock.json
+!tsconfig.json
