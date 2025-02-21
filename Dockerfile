@@ -1,4 +1,4 @@
-FROM node:lts-slim as builder
+FROM node:23.8-slim as builder
 
 ARG ENVIRONMENT
 
